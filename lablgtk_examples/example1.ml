@@ -21,27 +21,14 @@ let main () =
   let factory = new GMenu.factory file_menu ~accel_group in
   factory#add_item "Quit" ~key:_Q ~callback: Main.quit;
 
-  (* add text view with scroll bars *)
-  let scroll = GBin.scrolled_window
-               ~hpolicy:`AUTOMATIC ~vpolicy:`AUTOMATIC
-               ~packing:vbox#add () in
-  let textview = GText.view ~packing:scroll#add_with_viewport () in
-  (* set text *)
-  textview#buffer#set_text "Insert text here";
-
   (* Button *)
   let add_button = GButton.button ~label:"+"
                               ~packing:vbox#add () in
   add_button#connect#clicked ~callback: (fun () -> count := !count + 1; prerr_endline (string_of_int(!count)));
-  count := !count + 1;
 
   let minus_button = GButton.button ~label:"-"
                               ~packing:vbox#add () in 
-  minus_button#connect#clicked ~callback: (fun () -> prerr_endline "-");
-
-  let minus_button = GButton.toggle_button ~label:"Toggle"
-                              ~packing:vbox#add () in 
-  minus_button#connect#clicked ~callback: (fun () -> prerr_endline "Toggled!");  
+  minus_button#connect#clicked ~callback: (fun () -> count := !count - 1; prerr_endline (string_of_int(!count)));
 
   (* Display the windows and enter Gtk+ main loop *)
   window#add_accel_group accel_group;
