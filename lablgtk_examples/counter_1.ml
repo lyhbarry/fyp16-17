@@ -7,7 +7,7 @@ let count = ref 0
 
 let main () =
   let window = GWindow.window ~width:320 ~height:240
-                              ~title:"Simple lablgtk program" () in
+                              ~title:"Counter v1" () in
   let vbox = GPack.vbox ~packing:window#add () in
   window#connect#destroy ~callback:Main.quit;
 
