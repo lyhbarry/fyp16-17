@@ -3,10 +3,6 @@ open GdkKeysyms
 
 let locale = GtkMain.Main.init ()
 
-let count = ref 0
-let input = ref "hello"
-let output = ref ""
-
 let main () =
   let window = GWindow.window ~width:320 ~height:240
                               ~title:"Field Example" () in
