@@ -33,3 +33,10 @@ ocamlopt -o hello amodule.cmx bmodule.cmx
 ```
 
 The following is the list of all 'modules' examples:
+* Hello with modules
+ * Build a hello executable with 2 modules (amodule.ml, bmodule.ml)
+* Open module
+ * Demonstrate how `open` is used to access a module (amodule.ml, cmodule.ml)
+* Interfaces and Signatures
+ * Masking of interfaces with a .mli file (moduleMasking.ml, moduleMasking.mli)
+ 
