@@ -1,0 +1,4 @@
+open Amodule
+
+let () = 
+	bye ()
