@@ -19,8 +19,8 @@ The following is a list of all 'lablgtk' examples:
 To compile modules examples use the following commands below:
 
 ```
-ocamlopt -c <First module filename>`
-ocamlopt -c <Second module filename>`
+ocamlopt -c <First module filename>
+ocamlopt -c <Second module filename>
 ocamlopt -o <Name of executable> <First module .cmx file> <Second module .cmx file>
 ```
 
