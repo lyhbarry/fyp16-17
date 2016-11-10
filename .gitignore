@@ -1,0 +1,6 @@
+# OCaml Compiled Code
+*.cmi
+*.cmo
+*.cmx
+*.out
+*.o
