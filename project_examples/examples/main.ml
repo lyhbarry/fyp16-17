@@ -1,3 +1,8 @@
+(*
+	ocamlfind ocamlopt -c -package lablgtk2 -linkpkg  mvclablgtk.ml
+	ocamlfind ocamlopt -c -package lablgtk2 -linkpkg main.ml
+	ocamlfind ocamlc -g -package lablgtk2 -linkpkg mvclablgtk.ml main.ml -o test
+*)
 open Mvclablgtk
 
 (* Counter Example *)
