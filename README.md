@@ -40,3 +40,12 @@ The following is the list of all 'modules' examples:
 * Interfaces and Signatures
  * Masking of interfaces with a .mli file (moduleMasking.ml, moduleMasking.mli)
  
+## Project Examples
+### Modules
+To compile examples use the following commands below:
+
+```
+ocamlfind ocamlopt -c -package lablgtk2 -linkpkg  mvclablgtk.ml
+ocamlfind ocamlopt -c -package lablgtk2 -linkpkg main.ml
+ocamlfind ocamlc -g -package lablgtk2 -linkpkg mvclablgtk.ml main.ml -o test
+``` 
