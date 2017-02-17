@@ -1,0 +1,5 @@
+S src
+
+PKG lablgtk2 ounit
+
+B _build/src

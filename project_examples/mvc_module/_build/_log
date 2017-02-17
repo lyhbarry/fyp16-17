@@ -1,0 +1,18 @@
+### Starting build.
+# Target: src/main.ml.depends, tags: { package(lablgtk2), package(ounit), extension:ml, file:src/main.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package lablgtk2 -package ounit -modules src/main.ml > src/main.ml.depends # cached
+# Target: src/awesome.mli.depends, tags: { package(lablgtk2), package(ounit), extension:mli, file:src/awesome.mli, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package lablgtk2 -package ounit -modules src/awesome.mli > src/awesome.mli.depends # cached
+# Target: src/awesome.cmi, tags: { package(lablgtk2), package(ounit), byte, compile, extension:mli, file:src/awesome.mli, include, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package lablgtk2 -package ounit -I src -o src/awesome.cmi src/awesome.mli # cached
+# Target: src/button_mvc.ml.depends, tags: { package(lablgtk2), package(ounit), extension:ml, file:src/button_mvc.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package lablgtk2 -package ounit -modules src/button_mvc.ml > src/button_mvc.ml.depends
+# Target: src/button_mvc.cmo, tags: { package(lablgtk2), package(ounit), byte, compile, extension:cmo, extension:ml, file:src/button_mvc.cmo, file:src/button_mvc.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package lablgtk2 -package ounit -I src -o src/button_mvc.cmo src/button_mvc.ml
+# Target: src/main.cmo, tags: { package(lablgtk2), package(ounit), byte, compile, extension:cmo, extension:ml, file:src/main.cmo, file:src/main.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package lablgtk2 -package ounit -I src -o src/main.cmo src/main.ml
++ ocamlfind ocamlc -c -package lablgtk2 -package ounit -I src -o src/main.cmo src/main.ml
+File "src/main.ml", line 7, characters 21-26:
+Error: Unbound value B.msg
+Command exited with code 2.
+# Compilation unsuccessful.
