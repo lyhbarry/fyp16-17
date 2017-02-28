@@ -1,20 +1,23 @@
 open Mvclablgtk
 
-(* Field Example *)
 (* MODEL *)
-(* let model = ref 0 *)
 let model = ref 0
 
-(* UPDATE *)
-(* Use OCaml variants *)
-let update =
-	[(fun x -> String.uppercase_ascii(x));
-	 (fun x -> String.lowercase_ascii(x))]
-
 (* VIEW *)
-let view =
-	["Upper"; "Lower"]
+let view = ["Upper"; "Lower"; "Cap"; "Uncap"]
+
+(* UPDATE *)
+type msg = ToUpper | ToLower | Capitalize | Uncapitalize
+
+let update msg model =
+  match msg with
+  | ToUpper -> String.uppercase_ascii(model)
+  | ToLower -> String.lowercase_ascii(model)
+  | Capitalize -> String.capitalize_ascii(model)
+  | Uncapitalize -> String.uncapitalize_ascii(model)
+
+let var = [ToUpper; ToLower; Capitalize; Uncapitalize]
 
 (* Excecute program *)
 let () =
-  Mvclablgtk.main_field (model, view, update)
+  Mvclablgtk.main_field (model, view, update, var)
