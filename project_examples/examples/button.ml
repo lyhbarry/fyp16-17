@@ -1,4 +1,4 @@
-open Mvclablgtk
+open Ulmus
 
 (* Counter Example *)
 
@@ -22,4 +22,4 @@ let var = [Increment; Decrement; DoubleIncr; DoubleDecr]
 
 (* Excecute program *)
 let () =
-  Mvclablgtk.main model view update var ~title:"Button" ~width: 480 ~height: 360
+  Ulmus.main model view update var ~title:"Button" ~width: 480 ~height: 360

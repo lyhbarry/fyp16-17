@@ -4,7 +4,7 @@ open GdkKeysyms
 let locale = GtkMain.Main.init ()
 
 
-let add_button (vbox, component, model, view, update, msg) =
+let add_button vbox component model view update msg =
   (* Buttons *)
   let button = GButton.button ~label:view
                             ~packing:vbox#add () in
@@ -13,7 +13,7 @@ let add_button (vbox, component, model, view, update, msg) =
   component#buffer#set_text (string_of_int(!model)));;
 
 
-let build_view (vbox, model, view, update, var) =
+let build_view vbox model view update var =
   (* Text display *)
   let scroll = GBin.scrolled_window
                ~hpolicy:`AUTOMATIC
@@ -23,7 +23,7 @@ let build_view (vbox, model, view, update, var) =
   component#buffer#set_text (string_of_int(!model));
 
   for i = 0 to ((List.length view) - 1) do
-    add_button (vbox, component, model, (List.nth view i), update, (List.nth var i))
+    add_button vbox component model (List.nth view i) update (List.nth var i)
   done;;
 
 
@@ -43,7 +43,7 @@ let main ?(width=320) ?(height=240) ?(title="Default") model view update var =
   let factory = new GMenu.factory file_menu ~accel_group in
   factory#add_item "Quit" ~key:_Q ~callback: Main.quit;
 
-  build_view(vbox, model, view, update, var);
+  build_view vbox model view update var;
 
   (* Display the windows and enter Gtk+ main loop *)
   window#add_accel_group accel_group;
@@ -56,14 +56,15 @@ let field_button (vbox, text_input, textview, model, view, update, msg) =
   let uppercase_button = GButton.button ~label:view
                                         ~packing:vbox#add () in
   uppercase_button#connect#clicked ~callback: (fun () ->
-  let op = update msg text_input#text in
-  textview#buffer#set_text op);;
+  let model = update msg text_input#text in
+  textview#buffer#set_text model);;
 
 
-let msg_field (vbox, model, view, update, var) =
+let msg_field vbox model view update var =
   (* Text input *)
   let text_input = GEdit.entry
-                   ~packing:vbox#add () in
+                   ~packing:vbox#add ()
+                   ~text: model in
 
   (* Text output display *)
   let scroll = GBin.scrolled_window
@@ -76,7 +77,7 @@ let msg_field (vbox, model, view, update, var) =
   done;;
 
 
-let main_field (model, view, update, var) =
+let main_field model view update var =
   let window = GWindow.window ~width:320 ~height:240
                               ~title:"Example" () in
   let vbox = GPack.vbox ~packing:window#add () in
@@ -92,7 +93,7 @@ let main_field (model, view, update, var) =
   let factory = new GMenu.factory file_menu ~accel_group in
   factory#add_item "Quit" ~key:_Q ~callback: Main.quit;
 
-  msg_field(vbox, model, view, update, var);
+  msg_field vbox model view update var;
 
   (* Display the windows and enter Gtk+ main loop *)
   window#add_accel_group accel_group;

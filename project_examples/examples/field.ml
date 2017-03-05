@@ -1,7 +1,9 @@
-open Mvclablgtk
+open Ulmus
+
+(* Field Example *)
 
 (* MODEL *)
-let model = ref 0
+let model = "Insert text here"
 
 (* VIEW *)
 let view = ["Upper"; "Lower"; "Cap"; "Uncap"]
@@ -20,4 +22,4 @@ let var = [ToUpper; ToLower; Capitalize; Uncapitalize]
 
 (* Excecute program *)
 let () =
-  Mvclablgtk.main_field (model, view, update, var)
+  Ulmus.main_field model view update var
