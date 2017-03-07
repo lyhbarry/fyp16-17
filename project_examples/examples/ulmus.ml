@@ -4,10 +4,12 @@ open GdkKeysyms
 let locale = GtkMain.Main.init ()
 
 
+(* Start of Main for Button example *)
+
 let add_button vbox component model view update msg =
   (* Buttons *)
   let button = GButton.button ~label:view
-                            ~packing:vbox#add () in
+                              ~packing:vbox#add () in
 	button#connect#clicked ~callback: (fun () ->
   model := update msg !model;
   component#buffer#set_text (string_of_int(!model)));;
@@ -50,6 +52,8 @@ let main ?(width=320) ?(height=240) ?(title="Default") model view update var =
   window#show ();
   Main.main ()
 
+
+(* Start of Main for field example *)
 
 let field_button (vbox, text_input, textview, model, view, update, msg) =
   (* Button *)
