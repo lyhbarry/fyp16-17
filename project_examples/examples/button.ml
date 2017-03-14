@@ -1,17 +1,24 @@
 open Ulmus
+open Component
 
 (* Counter Example *)
+(* type msg = Increment | Decrement | DoubleIncr | DoubleDecr | Square *)
+
 
 (* MODEL *)
 let model = ref 0
 
+
 (* VIEW *)
-(* TODO: Build records for View *)
-let view = ["+"; "-"; "++"; "--"; "**"]
+let view =
+  [	[ Window (320, 240, "Hello") ]
+  ; [ Button (Increment, "+"); Button (Decrement, "-") ]
+  ; [ Button (DoubleIncr, "++"); Button (DoubleDecr, "--") ]
+  ; [ Button (Square, "**"); Button (Reset, "Reset") ]
+  ]
+
 
 (* UPDATE *)
-type msg = Increment | Decrement | DoubleIncr | DoubleDecr | Square
-
 let update msg model =
   match msg with
   | Increment ->
@@ -24,9 +31,11 @@ let update msg model =
   	  model - 2
   | Square ->
   	  model * model
+  | Reset ->
+  	  0
 
-let var = [Increment; Decrement; DoubleIncr; DoubleDecr; Square]
 
 (* Excecute program *)
+(* TODO: Build records *)
 let () =
-  Ulmus.main model view update var ~title:"Button" ~width: 480 ~height: 360
+  Ulmus.main model view update

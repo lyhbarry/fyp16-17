@@ -1,4 +1,5 @@
 #! /bin/bash
+ocamlfind ocamlopt -c -package lablgtk2 -linkpkg  component.ml
 ocamlfind ocamlopt -c -package lablgtk2 -linkpkg  ulmus.ml
 ocamlfind ocamlopt -c -package lablgtk2 -linkpkg button.ml
 ocamlfind ocamlc -g -package lablgtk2 -linkpkg ulmus.ml button.ml -o test
